@@ -25,7 +25,7 @@ class AdminAuthController extends Controller
     {
         if ($request->session()->has('user_id')) {
             $userType = $request->session()->get('type');
-            
+
             // Redirect to appropriate dashboard based on user type
             switch ($userType) {
                 case 'admin':
@@ -168,17 +168,19 @@ class AdminAuthController extends Controller
             ], 400);
         }
     
-        // OTP is valid - proceed to login
-        $user->verification_code = null; // Clear OTP after successful verification
-        $user->verification_code_expires_at = null; // Clear expiration time
+    
+        $user->verification_code = null; 
+        $user->verification_code_expires_at = null;
         $user->save();
     
-        // Store session data for logged-in user
+      
         $request->session()->put('user_id', $user->id);
         $request->session()->put('name', $user->full_name);
         $request->session()->put('type', $user->type ?? 'user');
+        $request->session()->put('profile_picture', $user->profile_picture ?? '');
+
     
-        // Clear mobile number from session
+      
         $request->session()->forget('mobile_number');
     
         return response()->json([

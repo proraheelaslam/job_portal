@@ -292,3 +292,7 @@ tr.selected {
 select {
     background: none !important;
 }
+
+#phone {
+    padding-left: 100px !important;
+}
