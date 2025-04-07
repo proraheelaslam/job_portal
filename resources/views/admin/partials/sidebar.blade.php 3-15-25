@@ -1,0 +1,106 @@
+<!-- Sidebar navigation -->
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+        <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
+            <span class="app-brand-logo demo">
+                <!-- App Logo (SVG or Image) -->
+            </span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2">Admin Panel</span>
+        </a>
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+            <i class="bx bx-chevron-left d-block d-xl-none align-middle"></i>
+        </a>
+    </div>
+
+    <div class="menu-divider mt-0"></div>
+    <ul class="menu-inner py-1">
+        <!-- Dashboard -->
+        <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Dashboards">Dashboard</div>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->routeIs('admin.bulk_students.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.bulk_students.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-upload"></i>
+                <div data-i18n="Bulk Students">Bulk Students</div>
+            </a>
+        </li>
+
+        <!-- Student Portal Menu -->
+        <li class="menu-item {{ request()->is('admin/students*') ? 'open' : '' }} {{ request()->routeIs('admin.students.create') || request()->routeIs('admin.students.index') || request()->input('type') ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-group"></i>
+                <div class="text-truncate" data-i18n="Student Portal">Student Portal</div>
+                <i class="menu-arrow"></i>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->routeIs('admin.students.create') ? 'active' : '' }}">
+                    <a href="{{ route('admin.students.create') }}" class="menu-link">
+                        <div class="text-truncate" data-i18n="Create New Student">Create New Student</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('admin.students.index') && !request()->has('type') ? 'active' : '' }}">
+                    <a href="{{ route('admin.students.index') }}" class="menu-link">
+                        <div class="text-truncate" data-i18n="Total Students">Total Students({{ $totalStudents }})</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->input('type') == 'otr_pending' ? 'active' : '' }}">
+                    <a href="{{ route('admin.students.index', ['type' => 'otr_pending']) }}" class="menu-link">
+                        <div class="text-truncate" data-i18n="OTR Pending Students">OTR Pending({{ $otrPending }})</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->input('type') == 'otr_complete' ? 'active' : '' }}">
+                    <a href="{{ route('admin.students.index', ['type' => 'otr_complete']) }}" class="menu-link">
+                        <div class="text-truncate" data-i18n="OTR Pending Students">OTR Completed({{ $otrComplete }})</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->input('type') == 'app_id_pending' ? 'active' : '' }}">
+                    <a href="{{ route('admin.students.index', ['type' => 'app_id_pending']) }}" class="menu-link">
+                        <div class="text-truncate" data-i18n="Connections">App ID Pending({{ $appIdPending }})</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->input('type') == 'app_id_complete' ? 'active' : '' }}">
+                    <a href="{{ route('admin.students.index', ['type' => 'app_id_complete']) }}" class="menu-link">
+                        <div class="text-truncate" data-i18n="Connections">App ID Complete({{ $appIdComplete }})</div>
+                    </a>
+                </li>
+                <!-- More items... -->
+            </ul>
+        </li>
+
+        <!-- Agent Portal Menu -->
+        @if(session()->get('type') != 'agent')  
+
+            <li class="menu-item {{ request()->is('admin/agents*') ? 'open' : '' }} {{ request()->routeIs('admin.agents.create') || request()->routeIs('admin.agents.index') || request()->input('status') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div class="text-truncate" data-i18n="Agent Portal">Agent Portal</div>
+                    <i class="menu-arrow"></i>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->routeIs('admin.agents.create') ? 'active' : '' }}">
+                        <a href="{{ route('admin.agents.create') }}" class="menu-link">
+                            <div class="text-truncate" data-i18n="Create New Agent">Create New Agent</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ request()->routeIs('admin.agents.index') && !request()->has('status') ? 'active' : '' }}">
+                        <a href="{{ route('admin.agents.index') }}" class="menu-link">
+                            <div class="text-truncate" data-i18n="Total Agents">Total Agents ({{$totalAgents}}) </div>
+                        </a>
+                    </li>
+                
+                
+                </ul>
+            </li>
+
+        @endif
+
+
+
+ 
+
+            
+    </ul>
+</aside>

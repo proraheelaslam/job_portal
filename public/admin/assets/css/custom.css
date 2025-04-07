@@ -1,0 +1,294 @@
+/* Ensure table stays full width */
+.dataTables_wrapper table {
+    width: 100% !important;
+}
+
+/* Ensure DataTable controls (search, pagination) are aligned */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    padding: 10px !important;
+}
+
+.dataTables_wrapper {  padding-bottom: 10px;}
+.dataTables_wrapper table thead tr { background: #468499 !important; }
+.dataTables_wrapper table thead tr th{ color: white !important; }   
+
+.duplicate-row td{
+    color: red !important;
+     
+}
+
+.menu{
+    background-color: #0e223f;
+}
+
+.layout-navbar{
+    background-color: #142946;
+}
+.layout-menu-toggle{
+    display: none!important;
+}
+.app-brand-link{
+    color:#fff;
+}
+.menu-vertical .menu-item .menu-link{
+    color:#fff;
+   
+}
+.menu-vertical .menu-item .menu-sub li a{
+    color: #000;
+font-weight: 700;
+   
+}
+
+.menu .app-brand .app-brand-text{
+    color: #fff;
+}
+.menu .app-brand.demo{
+    margin-top: 0px;
+}
+.menu-vertical .menu-divider{
+    border-block-start-color:#468499;
+}
+.menu-vertical .menu-link{
+    background-color:#5f61e6;
+}
+.menu-vertical .menu-item { margin-top: 5px !important;  margin-bottom: 5px !important; }
+.menu-vertical .menu-sub li a{ background-color: #71dd37; }
+
+
+
+.menu-vertical .menu-inner > .menu-item.active > .menu-link:not(.menu-toggle){
+    background: #fff;
+    color: #5f61e6;
+}
+.menu-vertical .menu-item.active > .menu-toggle{
+    background: #fff;
+    color: #00a5a2;;
+}
+.menu-vertical .menu-item:not(.active):not(.open) .menu-link:hover{
+    /* background: rgb(0,165,162); */
+    background: #fff;
+    color: #00a5a2;;
+}
+
+.layout-page{
+    height: 100vh;
+    overflow: hidden;
+}
+.content-wrapper .w-100.container-p-x{
+    height: 100%;
+    overflow-y: scroll;
+}
+.menu-sub > .menu-item.active > .menu-link{
+    color: #fff !important;
+    background-color: #6A5ACD;
+}
+.dataTables_wrapper table thead tr{
+ background-color: #0e223f!important;   
+}
+
+.menu-sub li{
+    list-style: none;
+}
+.menu .menu-sub > .menu-item > .menu-link::before{
+    display: none;
+}
+.menu-vertical .menu-item.active:not(.open) > .menu-link:not(.menu-toggle)::before{
+    display: none;
+}
+.disabled_field { pointer-events: none; background: #ddd; }
+
+table, th, td {
+    border-left: 1px solid #ccc;
+    border-collapse: collapse;
+  }
+
+  .table-striped > tbody > tr:nth-child(odd) > td,
+ .table-striped > tbody > tr:nth-child(odd) > th,
+ .table-striped > thead > tr > th {
+   white-space: nowrap;
+ }
+ #students-table {
+   overflow: auto;
+ }
+
+ .form-label{
+    color:#000;
+ }
+
+ .badge-student-status { background-color: #0e223f ;}
+ .filter-badge {
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 15px;
+    padding: 12px 14px;
+    border-radius: 20px;
+    margin: 0px;
+    margin-top: 5px;
+    min-width: 271px !important;
+    background-color: rgb(38 59 90);
+ 
+
+}
+.filter-badge.active-badge {
+    background-color: rgb(0,165,162);  
+    color: #fff; 
+}
+
+.filter-badge:hover {
+    opacity: 0.9;  
+}
+.table tbody tr td {
+    color: #000;
+}
+.form-control , .form-select { border: 1px solid #000; }
+.dataTables_scrollBody  table{
+    max-height: 80vh !important;  
+    
+}
+
+.menu-vertical .menu-inner > .menu-item .menu-link {
+    border-radius: 0;
+    margin-block: 0;
+    margin-inline: 1rem;
+    box-shadow: 1px -5px 14px 8px #999 inset;
+}
+
+.menu-vertical .menu-item .menu-link {
+    color: #000;
+    background: #fff;
+}  
+
+
+/*dashboard*/
+.dash_box_col {  background: #3840a1;
+    color: white;
+    border: 1px solid #1e54ec !important; }   
+
+.dash_box_col .card-title{   color: white !important; }
+.dash_box_row {   position: relative;top: 10px;}  
+    .hover-effect:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+.dashboard-label{
+    font-weight: 900;
+    font-size: 22px;
+}
+.dashboard-top-heading{
+    color: rgb(14, 34, 63);
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+#export-buttons .buttons-collection { 
+    height: 38px;
+    margin-right: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#export-buttons .dt-buttons.btn-group { height: 38px;
+    margin-left: 8px;
+    margin-right: 44px; }
+
+.jconfirm-content div{ color: #000; }
+
+
+
+/* Custom Export Modal Styling */
+#exportModal .modal-dialog {
+    max-width: 800px; /* Even wider modal */
+}
+
+#columnSelection {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+#columnSelection .form-check {
+    padding: 8px 15px;
+    margin: 5px 0;
+    
+}
+
+ 
+
+#columnSelection .form-check-label {
+    margin-left: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#columnSelection .form-check-input {
+    cursor: pointer;
+}
+
+.modal-footer {
+    padding: 15px;
+    background-color: #eee;
+    border-top: 1px solid #dee2e6;
+    padding-top: 10px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #exportModal .modal-dialog {
+        max-width: 95%;
+    }
+    
+    #columnSelection .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.modal .modal-header .btn-close{ top: 25px;    right: 23px;}
+ /* Style for selected rows */
+tr.selected {
+    background-color: #f5f5f5;
+}
+
+/* Checkbox styling */
+.students-checkbox {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+#select-all {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    margin-left: 0px;
+}
+.default_exp_btns { display: none !important; }
+/* Modal Header Styling */
+.modal-header.bg-gray-600 {
+    background-color: #eee; /* Gray-600 equivalent */
+    border-bottom: 1px solid #374151; /* Slightly darker border */
+    padding: 1rem 1.5rem;
+}
+
+.modal-header.bg-gray-600 .modal-title {
+    color:#000;
+    font-weight: 500;
+}
+
+/* White close button for dark headers */
+.btn-close-white {
+    filter: invert(1) brightness(100%);
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.btn-close-white:hover {
+    opacity: 1;
+}
+
+ 
+select {
+    background: none !important;
+}
