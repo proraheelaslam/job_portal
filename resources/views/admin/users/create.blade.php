@@ -78,12 +78,12 @@ $(document).ready(function () {
         separateDialCode: true,  
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
     });
+    $('#phone').css('padding-right', '248px');
 
-    $(input).parent().find('input').css('padding-right', '229px');
+
     $(phoneInput).on('countrychange', function() {
         $('#countryCode').val('+' + iti.getSelectedCountryData().dialCode);
     });
-
 
     function validatePhoneNumber() {
         const phoneNumber = iti.getNumber(); 
@@ -129,6 +129,7 @@ $(document).ready(function () {
 
 
     $('#countryCode').val('+' + iti.getSelectedCountryData().dialCode);
+
 });
 </script>
     @endpush

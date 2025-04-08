@@ -134,7 +134,6 @@ class AdminAuthController extends Controller
             ], 422);
         }
     
-        // Retrieve the mobile number from session
         $mobileNumber = $request->session()->get('mobile_number');
     
         if (!$mobileNumber) {
@@ -153,7 +152,6 @@ class AdminAuthController extends Controller
             ], 404);
         }
     
-        // Check if OTP matches and is not expired
         if (!$user->verification_code || $user->verification_code != $request->otp) {
             return response()->json([
                 'success' => false,
@@ -186,7 +184,7 @@ class AdminAuthController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Login successful!',
-            'redirect' => route('admin.dashboard') // Redirect to admin dashboard
+            'redirect' => route('admin.dashboard') 
         ]);
     }
     public function completeRegistration(Request $request)
@@ -263,7 +261,6 @@ class AdminAuthController extends Controller
 
     private function maskMobile($mobile)
     {
-        // Mask the mobile number for display (e.g., +91 98765XXXXX)
         return substr($mobile, 0, -5) . 'XXXXX';
     }
 

@@ -86,6 +86,8 @@
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
             nationalMode: false
         });
+        
+        $('#phone').css('padding-right', '254px');
 
         // Set the existing phone number
         if (existingPhone) {

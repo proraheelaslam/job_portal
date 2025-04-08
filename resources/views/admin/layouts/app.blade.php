@@ -56,6 +56,10 @@
     <script src="{{ asset('admin/assets/js/main.js?v=4.1') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.10.6/bundle/libphonenumber-js.min.js"></script>
+    <script>
+
+
+    </script>
     @stack('scripts') 
 </body>
 </html>

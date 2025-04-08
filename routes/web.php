@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\ProfileController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front_end.dashbord');
 });
 
 // Public Routes for Login and Registration
