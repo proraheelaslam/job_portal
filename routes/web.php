@@ -21,6 +21,13 @@ use App\Http\Controllers\Admin\ProfileController;
 Route::get('/', function () {
     return view('front_end.dashbord');
 });
+Route::get('/about', function () {
+    return view('front_end.home.about');
+})->name('about');
+Route::get('/contact', function () {
+    return view('front_end.home.contact');
+})->name('contact');
+
 
 // Public Routes for Login and Registration
 Route::prefix('admin')->name('admin.')->group(function () {
