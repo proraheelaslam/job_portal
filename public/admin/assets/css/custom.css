@@ -292,3 +292,12 @@ tr.selected {
 select {
     background: none !important;
 }
+
+.submenu {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.submenu li {
+    list-style-type: none;
+}

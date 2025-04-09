@@ -14,11 +14,9 @@ class UserController extends Controller
 
     public function create()
     {
-        // Pass roles to the view to populate the select dropdown
         $roles = [User::ROLE_USER => 'User', User::ROLE_EMPLOYEE => 'Employee', User::ROLE_ADMIN => 'Admin'];
         return view('admin.users.create', compact('roles'));
     }
-    // Display user list
     public function index(Request $request)
     {
         
@@ -27,18 +25,16 @@ class UserController extends Controller
             $users = User::select('id', 'full_name', 'email', 'phone', 'status')->orderBy('created_at', 'desc'); // Fetching data
             return DataTables::of($users)
                 ->addColumn('action', function($user){
-                    // Buttons for actions (edit/delete)
                     return '<button data-id="'.$user->id.'" class="btn btn-sm btn-danger delete-user">Delete</button>
                             <button data-id="'.$user->id.'" class="btn btn-sm btn-primary edit-user">Edit</button>';
                 })
                 ->addColumn('status', function($user){
-                    // Displaying status as Active/Inactive
                     return $user->status == 1 ? 'Active' : 'Inactive';
                 })
-                ->make(true);  // DataTables will handle the rendering
+                ->make(true);  
         }
 
-        return view('admin.users.index');  // Return the view for the user listing
+        return view('admin.users.index');  
     }
 
     public function edit($id)
@@ -48,61 +44,58 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user', 'roles'));
     }
 
+   
+
+
+
     public function update(Request $request, $id)
-    {
-        // Validate the incoming request data
-        $request->validate([
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'phone' => 'required',
-            'role' => 'required|in:user,employee,admin',
-        ]);
-    
-        // Find the user by ID or fail
-        $user = User::findOrFail($id);
-    
-        // Update the user information
-        $user->update([
-            'full_name' => $request->full_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'status' => $request->status ?? 0, // Default to 0 if status is not provided
-            'role' => $request->role,
-        ]);
-    
-        // Redirect back to the users index page with a success message
-        return redirect()->route('admin.users.index')->with('success', 'User updated successfully!');
-    }
-    
-    public function store(Request $request)
 {
-    // Validate the incoming request data
+    $request->validate([
+        'full_name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,'.$id,
+        'phone' => 'required|string|max:20',
+        'country_code' => 'required',
+        'role' => 'required|in:user,employee,admin',
+    ]);
+
+    $user = User::findOrFail($id);
+
+    $user->update([
+        'full_name' => $request->full_name,
+        'email' => $request->email,
+        'phone' => $request->phone, 
+        'country_code' => $request->country_code,
+        'status' => $request->status ?? 0, 
+        'role' => $request->role,
+    ]);
+
+    return redirect()->route('admin.users.index')->with('success', 'User updated successfully!');
+}
+
+
+public function store(Request $request)
+{
     $request->validate([
         'full_name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
-        'phone' => 'required',
-        'role' => 'required|in:user,employee,admin', // Ensure the role is valid
-        
+        'phone' => 'required|string|max:20',
+        'role' => 'required|in:user,employee,admin',
     ]);
 
-    // Combine the country code with the phone number
-    $phoneNumber = $request->country_code . $request->phone;
 
-    // Create and save the new user
+    $phoneNumber = $request->phone;
     $user = new User([
         'full_name' => $request->full_name,
         'email' => $request->email,
         'phone' => $phoneNumber,
-        'status' => $request->status ?? 0, // Default to 0 if status is not provided
+        'status' => $request->status ?? 0,
         'role' => $request->role,
     ]);
 
     $user->save();
 
-    // Redirect back to the users index page with a success message
     return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
 }
-
 
     // Bulk delete users
     public function bulkDelete(Request $request)

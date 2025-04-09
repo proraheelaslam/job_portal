@@ -28,6 +28,7 @@ class User extends Model
         'city',
         'address',
         'postcode',
+        'profile_picture',
         'dob',
         'status',
         'verification_code_expires_at',

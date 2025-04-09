@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProfileController;
+
+
 /*
 |---------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +19,7 @@ use App\Http\Controllers\Admin\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front_end.dashbord');
 });
 
 // Public Routes for Login and Registration
@@ -45,6 +48,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Admin dashboard route
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
         // Other protected admin routes can be added here
     });
 

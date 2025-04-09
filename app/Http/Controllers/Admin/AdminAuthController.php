@@ -25,7 +25,7 @@ class AdminAuthController extends Controller
     {
         if ($request->session()->has('user_id')) {
             $userType = $request->session()->get('type');
-            
+
             // Redirect to appropriate dashboard based on user type
             switch ($userType) {
                 case 'admin':
@@ -134,7 +134,6 @@ class AdminAuthController extends Controller
             ], 422);
         }
     
-        // Retrieve the mobile number from session
         $mobileNumber = $request->session()->get('mobile_number');
     
         if (!$mobileNumber) {
@@ -153,7 +152,6 @@ class AdminAuthController extends Controller
             ], 404);
         }
     
-        // Check if OTP matches and is not expired
         if (!$user->verification_code || $user->verification_code != $request->otp) {
             return response()->json([
                 'success' => false,
@@ -168,23 +166,25 @@ class AdminAuthController extends Controller
             ], 400);
         }
     
-        // OTP is valid - proceed to login
-        $user->verification_code = null; // Clear OTP after successful verification
-        $user->verification_code_expires_at = null; // Clear expiration time
+    
+        $user->verification_code = null; 
+        $user->verification_code_expires_at = null;
         $user->save();
     
-        // Store session data for logged-in user
+      
         $request->session()->put('user_id', $user->id);
         $request->session()->put('name', $user->full_name);
         $request->session()->put('type', $user->type ?? 'user');
+        $request->session()->put('profile_picture', $user->profile_picture ?? '');
+
     
-        // Clear mobile number from session
+      
         $request->session()->forget('mobile_number');
     
         return response()->json([
             'success' => true,
             'message' => 'Login successful!',
-            'redirect' => route('admin.dashboard') // Redirect to admin dashboard
+            'redirect' => route('admin.dashboard') 
         ]);
     }
     public function completeRegistration(Request $request)
@@ -261,7 +261,6 @@ class AdminAuthController extends Controller
 
     private function maskMobile($mobile)
     {
-        // Mask the mobile number for display (e.g., +91 98765XXXXX)
         return substr($mobile, 0, -5) . 'XXXXX';
     }
 

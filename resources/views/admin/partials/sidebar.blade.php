@@ -58,11 +58,18 @@
     <a class="btn btn-expanded"></a>
     <nav class="nav-main-menu">
         <ul class="main-menu">
-            <li>
-                <a class="dashboard2 " href="{{ route('admin.dashboard') }}">
+            <li class="has-submenu">
+                <a class="dashboard2" href="{{ route('admin.dashboard') }}" id="dashboard-menu-toggle">
                     <img src="{{ asset('admin/assets/imgs/page/dashboard/dashboard.svg') }}" alt="Dashboard">
                     <span class="name">Dashboard</span>
+                    <i class="menu-arrow"></i>
                 </a>
+                <ul class="submenu">
+                    <li style="list-style-type: none;"><a href="#">CRM</a></li>
+                    <li><a href="#">HRM</a></li>
+                    <li><a href="#">LMS</a></li>
+                    <li><a href="#">Admin</a></li>
+                </ul>
             </li>
             <li>
                 <a class="dashboard2 {{ request()->routeIs('admin.users.index') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
@@ -72,6 +79,8 @@
             </li>
         </ul>
     </nav>
+    
+
     <div class="border-bottom mb-20 mt-20"></div>
     <div class="box-profile-completed text-center mb-30"></div>
     <div class="sidebar-border-bg mt-50">
